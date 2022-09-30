@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Template containing an admin role
+
+Resources:
+  AdminRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: "AdminRole"
+      Description: "Powerful admin role"
+      MaxSessionDuration: 43200 # 12 hours
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS: "*"
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - PolicyName: admin-access
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action: "*"
+                Resource: "*"

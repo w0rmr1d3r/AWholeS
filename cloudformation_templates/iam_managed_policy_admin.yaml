@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Template containing an admin managed policy
+
+Resources:
+  AdminManagedPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      Description: "AdminPolicy"
+      ManagedPolicyName: admin-access
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action: '*'
+            Resource: '*'
