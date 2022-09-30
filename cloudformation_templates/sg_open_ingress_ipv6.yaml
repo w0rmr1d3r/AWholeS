@@ -1,0 +1,24 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Template containing a Security Group wiht an ingress rule open to the world
+
+Parameters:
+  SGName:
+    Description: Name for the SG
+    Default: "SgIngressOpenToTheWorld"
+    Type: String
+
+Resources:
+  EC2SG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: !Ref SGName
+      GroupDescription: "SG with ingress open to the world"
+      SecurityGroupIngress:
+        - CidrIpv6: ::/0
+          Description: "All allowed"
+          FromPort: -1
+          ToPort: -1
+          IpProtocol: -1
+      Tags:
+        - Key: Name
+          Value: !Ref SGName
