@@ -1,3 +1,3 @@
-# aws_security
+# AWholeS
 
-Repository holding stacks to evaluate and attack AWS infrastructure
+Repository with things to evaluate and attack AWS infrastructure
