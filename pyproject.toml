@@ -4,13 +4,16 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "AWholeS"
+author = "w0rmr1d3r"
+description= "A project with various things to review the security posture in AWS"
+url = "https://github.com/w0rmr1d3r/AWholeS"
+license = "MIT"
+classifiers = []
 version = "0.0.1"
 requires-python = ">=3.9"
 dependencies = [
     "boto3>=1.26.26"
 ]
-# Review other keywords in:
-# https://setuptools.pypa.io/en/latest/references/keywords.html
 
 [project.optional-dependencies]
 dev = ["pip-tools>=6.11.0"]
