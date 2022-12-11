@@ -1,14 +1,15 @@
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools>=65.0.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "AWholeS"
-author = "w0rmr1d3r"
-description= "A project with various things to review the security posture in AWS"
-url = "https://github.com/w0rmr1d3r/AWholeS"
-license = "MIT"
+description = "A project with various things to review the security posture in AWS"
+authors = [{ "name" = "w0rmr1d3r" }]
+urls = { "homepage" = "https://github.com/w0rmr1d3r/AWholeS", "documentation" = "https://github.com/w0rmr1d3r/AWholeS", "repository" = "https://github.com/w0rmr1d3r/AWholeS", "changelog" = "https://github.com/w0rmr1d3r/AWholeS" }
+license = { file = "LICENSE" }
 classifiers = []
+keywords = []
 version = "0.0.1"
 requires-python = ">=3.9"
 dependencies = [
