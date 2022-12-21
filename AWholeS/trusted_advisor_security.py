@@ -45,7 +45,6 @@ def obtain_security_checks() -> list:
                 security_checks.append(check)
     except Exception as e:
         print(e)
-        raise
     return security_checks
 
 
@@ -81,7 +80,6 @@ def obtain_failed_security_checks() -> list:
                 failed_security_checks.append(sec_check)
         except Exception as e:
             print(e)
-            raise
     return failed_security_checks
 
 
