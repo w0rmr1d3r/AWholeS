@@ -45,6 +45,7 @@ def obtain_security_checks() -> list:
                 security_checks.append(check)
     except Exception as e:
         print(e)
+        raise
     return security_checks
 
 
@@ -63,12 +64,13 @@ def describe_check_by_check_id(check_id: str):
         print(e)
 
 
-def show_failed_security_checks():
+def obtain_failed_security_checks() -> list:
     """
-    Prints a list of all failed Trusted Advisor Security Checks
+    Returns a list of all failed Trusted Advisor Security Checks
 
     :return: None
     """
+    failed_security_checks = []
     client = boto3.client('support', region_name='us-east-1')
 
     for sec_check in obtain_security_checks():
@@ -76,10 +78,28 @@ def show_failed_security_checks():
             response = client.describe_trusted_advisor_check_result(checkId=sec_check.get("id"), language='en')
             check_status = response.get("result").get("status")
             if check_status in ["warning", "error"]:
-                print(sec_check.get("name"))
+                failed_security_checks.append(sec_check)
         except Exception as e:
             print(e)
+            raise
+    return failed_security_checks
 
 
-if __name__ == "__main__":
-    show_failed_security_checks()
+def show_failed_security_checks():
+    """
+    Prints failed Trusted Advisor Security Checks
+
+    :return: None
+    """
+    for sec_check in obtain_failed_security_checks():
+        print(sec_check.get("name"))
+
+
+def show_failed_security_checks_with_account_id(account_id: str):
+    """
+    Prints failed Trusted Advisor Security Checks
+
+    :return: None
+    """
+    for sec_check in obtain_failed_security_checks():
+        print(f"{account_id} - {sec_check.get('name')}")
