@@ -4,12 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "AWholeS"
-description = "A project with various things to review the security posture in AWS"
+# Make sure this matches the description in GitHub and in the README.md
+description = "A project to review the security posture in AWS"
+readme = "README.md"
 authors = [{ "name" = "w0rmr1d3r" }]
-license = { file = "LICENSE" }
+license = { text = "MIT" }
 classifiers = []
-keywords = []
-version = "0.0.1"
+# Make sure this matches the keywords in GitHub
+keywords = ["aws", "security", "cloudformation", "python"]
+version = "0.0.2"
 requires-python = ">=3.9"
 dependencies = [
     "boto3>=1.26.26"

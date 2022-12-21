@@ -1,10 +1,21 @@
 # AWholeS
 
-Repository with things to evaluate and attack AWS infrastructure
+<!-- Make sure this matches the description in pyproject.toml -->
+A project to review the security posture in AWS
 
-## Scripts in Python (future PyPi package)
+## Python package
 
-See [AWholeS](AWholeS)
+See [AWholeS](AWholeS) or checkout the PyPi package [here](https://pypi.org/project/AWholeS/)
+
+### Usage
+
+```bash
+python AWholeS
+```
+
+## CloudFormation templates
+
+See [this folder](cloudformation_templates)
 
 ## Tools
 
