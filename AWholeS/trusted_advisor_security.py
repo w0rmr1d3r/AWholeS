@@ -65,7 +65,7 @@ def describe_check_by_check_id(check_id: str):
 
 def obtain_failed_security_checks() -> list:
     """
-    Returns a list of all failed Trusted Advisor Security Checks
+    Returns a list of all failed with error Trusted Advisor Security Checks
 
     :return: None
     """
@@ -76,11 +76,31 @@ def obtain_failed_security_checks() -> list:
         try:
             response = client.describe_trusted_advisor_check_result(checkId=sec_check.get("id"), language='en')
             check_status = response.get("result").get("status")
-            if check_status in ["warning", "error"]:
+            if check_status in ["error"]:
                 failed_security_checks.append(sec_check)
         except Exception as e:
             print(e)
     return failed_security_checks
+
+
+def obtain_warning_security_checks() -> list:
+    """
+    Returns a list of all failed with warning Trusted Advisor Security Checks
+
+    :return: None
+    """
+    warning_security_checks = []
+    client = boto3.client('support', region_name='us-east-1')
+
+    for sec_check in obtain_security_checks():
+        try:
+            response = client.describe_trusted_advisor_check_result(checkId=sec_check.get("id"), language='en')
+            check_status = response.get("result").get("status")
+            if check_status in ["warning"]:
+                warning_security_checks.append(sec_check)
+        except Exception as e:
+            print(e)
+    return warning_security_checks
 
 
 def show_failed_security_checks():
@@ -89,7 +109,11 @@ def show_failed_security_checks():
 
     :return: None
     """
+    print("FAILED")
     for sec_check in obtain_failed_security_checks():
+        print(sec_check.get("name"))
+    print("WARNING")
+    for sec_check in obtain_warning_security_checks():
         print(sec_check.get("name"))
 
 
