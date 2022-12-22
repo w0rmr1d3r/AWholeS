@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from pprint import pprint
 
 import boto3
 
@@ -52,7 +53,17 @@ class TrustedAdvisor:
         """
         try:
             response = self._support_client.describe_trusted_advisor_check_result(checkId=check_id, language="en")
-            print(response)
+            check = response.get("result")
+            print("ID: " + check.get("checkId"))
+            print("Status: " + check.get("status"))
+            print("Resources Processed: " + str(check.get("resourcesSummary").get("resourcesProcessed")))
+            print("Resources Flagged: " + str(check.get("resourcesSummary").get("resourcesFlagged")))
+            print("Resources Ignored: " + str(check.get("resourcesSummary").get("resourcesIgnored")))
+            print("Resources Suppressed: " + str(check.get("resourcesSummary").get("resourcesSuppressed")))
+            print("Flagged resources data:")
+            for flagged_resource in check.get("flaggedResources"):
+                if flagged_resource.get("status") != "ok":
+                    print(flagged_resource.get("metadata"))
         except Exception as e:
             print(e)
 
@@ -88,10 +99,10 @@ class TrustedAdvisor:
         failed_checks = self.obtain_failed_security_checks()
         print("ERROR")
         for sec_check in failed_checks.error_checks:
-            print(sec_check.get("name"))
-        print("WARNING")
+            print(sec_check.get("id") + " - " + sec_check.get("name"))
+        print("\nWARNING")
         for sec_check in failed_checks.warning_checks:
-            print(sec_check.get("name"))
+            print(sec_check.get("id") + " - " + sec_check.get("name"))
 
 
 def describe_severity_levels():
