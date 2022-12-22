@@ -1,7 +1,11 @@
 import inquirer
 
 from AWholeS.ec2 import show_all_regions, show_all_available_regions
-from AWholeS.sts_calls import get_current_arn, get_current_assumed_role, get_current_account_id
+from AWholeS.sts_calls import (
+    get_current_arn,
+    get_current_assumed_role,
+    get_current_account_id,
+)
 from AWholeS.trusted_advisor_security import TrustedAdvisor
 
 
@@ -13,7 +17,11 @@ def menu() -> None:
     """
     last_choice = None
     while True:
-        choice = inquirer.list_input("What do you want to run?", choices=["EC2", "STS", "Trusted Advisor", "exit"], default=last_choice)
+        choice = inquirer.list_input(
+            "What do you want to run?",
+            choices=["EC2", "STS", "Trusted Advisor", "exit"],
+            default=last_choice,
+        )
         if choice == "EC2":
             print("Showing all regions:")
             show_all_regions()
