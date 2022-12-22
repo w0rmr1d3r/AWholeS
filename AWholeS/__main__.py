@@ -9,6 +9,31 @@ from AWholeS.sts_calls import (
 from AWholeS.trusted_advisor_security import TrustedAdvisor
 
 
+def trusted_advisor_menu():
+    ta = TrustedAdvisor()
+    last_choice = None
+    while True:
+        choice = inquirer.list_input(
+            "What do you want to run?",
+            choices=["Failed security checks", "Data from check id", "exit"],
+            default=last_choice,
+        )
+        if choice == "Failed security checks":
+            print(f"Current Security failures for your account {get_current_account_id()}:")
+            ta.show_failed_security_checks()
+            print("\n")
+        elif choice == "Data from check id":
+            questions = [
+                inquirer.Text('check_id', message="Type the check id"),
+            ]
+            answers = inquirer.prompt(questions)
+            ta.describe_check_by_check_id(check_id=answers.get("check_id"))
+            print("\n")
+        elif choice == "exit":
+            return
+        last_choice = choice
+
+
 def menu() -> None:
     """
     Shows the menu with current options of the app.
@@ -19,7 +44,7 @@ def menu() -> None:
     while True:
         choice = inquirer.list_input(
             "What do you want to run?",
-            choices=["EC2", "STS", "Trusted Advisor", "exit"],
+            choices=["EC2", "STS", "Trusted Advisor", "test", "exit"],
             default=last_choice,
         )
         if choice == "EC2":
@@ -37,9 +62,10 @@ def menu() -> None:
             print(get_current_assumed_role())
             print("\n")
         elif choice == "Trusted Advisor":
-            ta = TrustedAdvisor()
-            print(f"Current Security failures for your account {get_current_account_id()}:")
-            ta.show_failed_security_checks()
+            trusted_advisor_menu()
+        elif choice == "test":
+            print(f"TEST")
+            # Add here what you want to test
             print("\n")
         elif choice == "exit":
             return
