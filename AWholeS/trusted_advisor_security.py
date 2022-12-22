@@ -10,9 +10,8 @@ class FailedSecurityChecks:
 
 
 class TrustedAdvisor:
-
     def __init__(self):
-        self._support_client = boto3.client('support', region_name='us-east-1')
+        self._support_client = boto3.client("support", region_name="us-east-1")
 
     def describe_checks(self):
         """
@@ -21,7 +20,7 @@ class TrustedAdvisor:
         :return: None
         """
         try:
-            response = self._support_client.describe_trusted_advisor_checks(language='en')
+            response = self._support_client.describe_trusted_advisor_checks(language="en")
             for check in response.get("checks"):
                 if check.get("category") == "security":
                     print(f"{check.get('id')} - {check.get('name')} - {check.get('metadata')}")
@@ -36,7 +35,7 @@ class TrustedAdvisor:
         """
         security_checks = []
         try:
-            response = self._support_client.describe_trusted_advisor_checks(language='en')
+            response = self._support_client.describe_trusted_advisor_checks(language="en")
             for check in response.get("checks"):
                 if check.get("category") == "security":
                     security_checks.append(check)
@@ -52,7 +51,7 @@ class TrustedAdvisor:
         :return: None
         """
         try:
-            response = self._support_client.describe_trusted_advisor_check_result(checkId=check_id, language='en')
+            response = self._support_client.describe_trusted_advisor_check_result(checkId=check_id, language="en")
             print(response)
         except Exception as e:
             print(e)
@@ -67,8 +66,9 @@ class TrustedAdvisor:
         warning_security_checks = []
         for sec_check in self.obtain_security_checks():
             try:
-                response = self._support_client.describe_trusted_advisor_check_result(checkId=sec_check.get("id"),
-                                                                                      language='en')
+                response = self._support_client.describe_trusted_advisor_check_result(
+                    checkId=sec_check.get("id"), language="en"
+                )
                 check_status = response.get("result").get("status")
                 if check_status in ["error"]:
                     error_security_checks.append(sec_check)
@@ -100,8 +100,6 @@ def describe_severity_levels():
 
     :return: None
     """
-    client = boto3.client('support')
-    response = client.describe_severity_levels(
-        language='en'
-    )
+    client = boto3.client("support")
+    response = client.describe_severity_levels(language="en")
     print(response)

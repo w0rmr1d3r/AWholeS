@@ -20,7 +20,10 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pip-tools>=6.11.0"]
+dev = [
+    "black~=22.0",
+    "pip-tools~=6.0"
+]
 
 [project.urls]
 "Homepage" = "https://github.com/w0rmr1d3r/AWholeS"
@@ -31,3 +34,15 @@ dev = ["pip-tools>=6.11.0"]
 
 [tool.setuptools]
 packages = ["AWholeS"]
+
+[tool.black]
+line-length = 120
+exclude = '''
+/(
+    \.eggs
+  | \.venv
+  | \.vscode
+  | dev
+  | venv
+)/
+'''
