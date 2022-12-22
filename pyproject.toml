@@ -15,7 +15,8 @@ keywords = ["aws", "security", "cloudformation", "python"]
 version = "0.0.2"
 requires-python = ">=3.9"
 dependencies = [
-    "boto3>=1.26.26"
+    "boto3>=1.26.26",
+    "inquirer~=3.0"
 ]
 
 [project.optional-dependencies]
