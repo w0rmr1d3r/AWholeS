@@ -1,6 +1,7 @@
 import inquirer
 
 from AWholeS.ec2 import show_all_regions, show_all_available_regions
+from AWholeS.iam import IAM
 from AWholeS.sts_calls import (
     get_current_arn,
     get_current_assumed_role,
@@ -24,10 +25,36 @@ def trusted_advisor_menu():
             print("\n")
         elif choice == "Data from check id":
             questions = [
-                inquirer.Text('check_id', message="Type the check id"),
+                inquirer.Text("check_id", message="Type the check id"),
             ]
             answers = inquirer.prompt(questions)
             ta.describe_check_by_check_id(check_id=answers.get("check_id"))
+            print("\n")
+        elif choice == "exit":
+            return
+        last_choice = choice
+
+
+def iam_menu():
+    iam = IAM()
+    last_choice = None
+    while True:
+        choice = inquirer.list_input(
+            "What do you want to run?",
+            choices=["List my policies", "Describe my policies", "exit"],
+            default=last_choice,
+        )
+        if choice == "List my policies":
+            print(f"Your policies:")
+            policies = iam.obtain_policies_on_role(role_name=get_current_assumed_role())
+            iam.list_all_policies_on_role(policies)
+            print("\n")
+        elif choice == "Describe my policies":
+            print("Your permissions:")
+            iam.describe_permissions(
+                policies=iam.obtain_policies_on_role(role_name=get_current_assumed_role()),
+                role_name=get_current_assumed_role(),
+            )
             print("\n")
         elif choice == "exit":
             return
@@ -44,7 +71,7 @@ def menu() -> None:
     while True:
         choice = inquirer.list_input(
             "What do you want to run?",
-            choices=["EC2", "STS", "Trusted Advisor", "test", "exit"],
+            choices=["EC2", "IAM", "STS", "Trusted Advisor", "test", "exit"],
             default=last_choice,
         )
         if choice == "EC2":
@@ -54,6 +81,8 @@ def menu() -> None:
             print("Showing current available regions:")
             show_all_available_regions()
             print("\n")
+        elif choice == "IAM":
+            iam_menu()
         elif choice == "STS":
             print("Your current ARN is:")
             print(get_current_arn())
