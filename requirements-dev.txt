@@ -8,9 +8,9 @@ black==22.12.0
     # via AWholeS (pyproject.toml)
 blessed==1.19.1
     # via inquirer
-boto3==1.26.26
+boto3==1.26.36
     # via AWholeS (pyproject.toml)
-botocore==1.29.26
+botocore==1.29.36
     # via
     #   boto3
     #   s3transfer
@@ -34,7 +34,7 @@ pathspec==0.10.3
     # via black
 pep517==0.13.0
     # via build
-pip-tools==6.11.0
+pip-tools==6.12.1
     # via AWholeS (pyproject.toml)
 platformdirs==2.6.0
     # via black
