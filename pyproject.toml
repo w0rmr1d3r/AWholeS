@@ -12,6 +12,7 @@ license = { text = "MIT" }
 classifiers = []
 # Make sure this matches the keywords in GitHub
 keywords = ["aws", "security", "cloudformation", "python"]
+# Make sure this matches the version in __version__.py
 version = "0.0.3"
 requires-python = ">=3.9"
 dependencies = [
