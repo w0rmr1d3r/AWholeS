@@ -15,12 +15,14 @@ keywords = ["aws", "security", "cloudformation", "python"]
 # Make sure this matches the version in __version__.py
 version = "0.0.3"
 requires-python = ">=3.9"
+# Always try to be compatible with these versions and above
 dependencies = [
     "boto3>=1.26.26",
-    "inquirer~=3.0"
+    "inquirer>=3.0"
 ]
 
 [project.optional-dependencies]
+# For local development, use those majors for now
 dev = [
     "black~=22.0",
     "pip-tools~=6.0"
