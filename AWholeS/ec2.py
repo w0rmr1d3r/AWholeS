@@ -1,6 +1,7 @@
 import boto3
 
 
+
 def obtain_all_available_regions() -> list:
     regions = []
     client = boto3.client("ec2")
@@ -9,10 +10,12 @@ def obtain_all_available_regions() -> list:
     return regions
 
 
+
+# This method is in the README.md
+# If updated or move, update the docs accordingly
 def show_all_available_regions():
     """
     Prints current available regions
-
     :return: None
     """
     for region in obtain_all_available_regions():

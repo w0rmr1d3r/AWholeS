@@ -125,9 +125,4 @@ def menu() -> None:
         last_choice = choice
 
 
-# If this doesn't find modules, use:
-# export PYTHONPATH=$PYTHONPATH:.
-# Ref: https://stackoverflow.com/questions/37233140/python-module-not-found
-if __name__ == "__main__":
-    print("Running AWholeS...")
-    menu()
+menu()
