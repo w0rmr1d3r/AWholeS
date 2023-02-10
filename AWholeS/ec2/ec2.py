@@ -1,14 +1,12 @@
 import boto3
 
 
-
 def obtain_all_available_regions() -> list:
     regions = []
     client = boto3.client("ec2")
     for region in client.describe_regions()["Regions"]:
         regions.append(region["RegionName"])
     return regions
-
 
 
 # This method is in the README.md

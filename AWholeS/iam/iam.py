@@ -1,14 +1,8 @@
-from dataclasses import dataclass
 from pprint import pprint
-from typing import Optional
 
 import boto3
 
-
-@dataclass
-class PoliciesOnRole:
-    attached_policies: Optional[list[dict]]
-    inline_policies: Optional[list[str]]
+from AWholeS.iam.dataclasses import PoliciesOnRole
 
 
 class IAM:

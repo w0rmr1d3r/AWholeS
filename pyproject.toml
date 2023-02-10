@@ -14,7 +14,7 @@ classifiers = []
 keywords = ["aws", "security", "cloudformation", "python"]
 # Make sure this matches the version in __version__.py
 version = "0.0.3"
-requires-python = ">=3.9"
+requires-python = ">=3.9.0"
 # Always try to be compatible with these versions and above
 dependencies = [
     "boto3>=1.26.26",
@@ -22,17 +22,17 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# For local development, use those majors for now
+# Always try to be compatible with these versions and above
 dev = [
-    "black~=22.0",
-    "pip-tools~=6.0"
+    "black>=22.0.0",
+    "pip-tools>=6.0.0"
 ]
 
 [project.urls]
 "Homepage" = "https://github.com/w0rmr1d3r/AWholeS"
 "Repository" = "https://github.com/w0rmr1d3r/AWholeS"
 "Bug Tracker" = "https://github.com/w0rmr1d3r/AWholeS/issues"
-"Documentation" = "https://github.com/w0rmr1d3r/AWholeS"
+"Documentation" = "https://github.com/w0rmr1d3r/AWholeS/blob/master/README.md"
 "Changelog" = "https://github.com/w0rmr1d3r/AWholeS"
 
 [tool.setuptools]

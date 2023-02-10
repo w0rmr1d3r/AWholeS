@@ -1,7 +1,7 @@
 import boto3
 from botocore.exceptions import ClientError
 
-from AWholeS.ec2 import obtain_all_available_regions
+from AWholeS.ec2.ec2 import obtain_all_available_regions
 
 
 def search_stack_by_name(stack_name: str):

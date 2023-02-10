@@ -1,13 +1,6 @@
-from dataclasses import dataclass
-from pprint import pprint
-
 import boto3
 
-
-@dataclass
-class FailedSecurityChecks:
-    error_checks: list
-    warning_checks: list
+from AWholeS.trusted_advisor.dataclasses import FailedSecurityChecks
 
 
 class TrustedAdvisor:
