@@ -8,7 +8,7 @@ A project to review the security posture in AWS
 
 ## Python package
 
-See [AWholeS](AWholeS) or checkout the PyPi package [here](https://pypi.org/project/AWholeS/)
+See [AWholeS (code)](https://github.com/w0rmr1d3r/AWholeS/tree/master/AWholeS) or checkout the [PyPi package](https://pypi.org/project/AWholeS/)
 
 ### Installation
 
@@ -35,8 +35,8 @@ if __name__ == '__main__':
 
 ### CloudFormation templates
 
-See [this folder](cloudformation_templates)
+See [this folder](https://github.com/w0rmr1d3r/AWholeS/tree/master/cloudformation_templates)
 
 ### List of tools
 
-See [Tools](docs/tools)
+See [Tools](https://github.com/w0rmr1d3r/AWholeS/tree/master/docs/tools)
