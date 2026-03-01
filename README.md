@@ -1,3 +1,9 @@
+# Note of archival
+
+Due to lack of time to maintain this project, archiving it. Do check better tools such as: https://github.com/prowler-cloud/prowler
+
+---
+
 # AWholeS
 
 <!-- Badges here -->
